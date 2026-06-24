@@ -4,7 +4,7 @@
 
 Urban Thread is a full-stack e-commerce web application developed using Spring Boot, Spring Security, JWT Authentication, MySQL, HTML, CSS, and JavaScript.
 
-The application allows users to register, login, browse products, add products to cart, place orders, and view order history securely using JWT-based authentication.
+The application enables users to securely register, log in, browse products, place orders, and manage their shopping experience through JWT-based authentication and authorization.
 
 ## Features
 
@@ -13,10 +13,12 @@ The application allows users to register, login, browse products, add products t
 * Spring Security Integration
 * Product Management
 * Shopping Cart Functionality
-* Order Placement
-* Order History
+* Order Placement and Order History
+* Secure REST APIs
 * Responsive Frontend UI
 * MySQL Database Integration
+* Swagger API Documentation
+* Unit Testing using JUnit 5 and Mockito
 
 ## Tech Stack
 
@@ -29,6 +31,9 @@ The application allows users to register, login, browse products, add products t
 * Spring Data JPA
 * Hibernate
 * MySQL
+* Swagger 
+* JUnit 5
+* Mockito
 
 ### Frontend
 
@@ -39,17 +44,31 @@ The application allows users to register, login, browse products, add products t
 ## Project Structure
 
 * EcommerceUI → Frontend
-* E-commerce → Spring Boot Backend
+* Ecommercebackend → Spring Boot Backend
 
-## Future Enhancements
+## API Documentation
 
-* Swagger API Documentation
-* Docker Containerization
-* Microservices Architecture
-* Redis Caching
-* Kafka Integration
-* Payment Gateway Integration
-* Unit Testing using JUnit and Mockito
+* Swagger UI has been integrated for interactive API documentation and testing.
+
+## Security
+
+* JWT-based Authentication
+* Password Encryption using Spring Security
+* Protected REST Endpoints
+* Stateless Authentication Mechanism
+
+## Testing
+
+Unit testing has been implemented using:
+
+* JUnit 5
+* Mockito
+* 
+Tested Service Layers:
+
+UserService
+ProductService
+OrderService
 
 ## Author
 
