@@ -171,42 +171,31 @@ function removeFromCart(index) {
 }
 async function checkout() {
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
-
+ const token = localStorage.getItem("token");
   if (cart.length === 0) {
     showMessage("Your cart is empty", "error");
     return;
   }
 
-  const user = JSON.parse(localStorage.getItem("user"));
-  const token = localStorage.getItem("token");
-
   if (!token) {
     showMessage("Please login before checkout", "error");
     return;
   }
-  if (!token) {
-  showMessage("Please login before checkout", "error");
-  return;
-}
 
-  const userId = user.id;
 
-  const productQuantities = {};
-  let totalAmount = 0;
+const productQuantities = {};
 
-  cart.forEach((item) => {
-    productQuantities[item.id] = item.quantity;
-    totalAmount += item.price * item.quantity;
-  });
+cart.forEach((item) => {
+  productQuantities[item.id] = item.quantity;
+});
 
-  const orderRequest = {
-    productQuantities: productQuantities,
-    totalAmount: totalAmount,
-  };
+const orderRequest = {
+  productQuantities: productQuantities
+};
 
   try {
-    const token = localStorage.getItem("token");
-    const response = await fetch(`${BASE_URL}/orders/place/${userId}`, {
+
+    const response = await fetch(`${BASE_URL}/orders/place`, {
       method: "POST",
       headers: {
     "Content-Type": "application/json",
@@ -409,10 +398,10 @@ async function loadOrders() {
 }
 
   try {
-    const response = await fetch(`${BASE_URL}/orders/user/${user.id}`, {
+ const response = await fetch(`${BASE_URL}/orders/my`, {
   headers: {
-    "Authorization": `Bearer ${token}`,
-  },
+    "Authorization": `Bearer ${token}`
+  }
 });
 
     if (!response.ok) {
